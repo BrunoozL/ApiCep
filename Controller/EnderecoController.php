@@ -1,7 +1,9 @@
 <?php
 
     namespace App\Controller;
-    use App\Controller\EnderecoController;
+    
+    use App\Model\{EnderecoModel, CidadeModel};
+    use Exception;
 
     include 'Controller.php';
 
