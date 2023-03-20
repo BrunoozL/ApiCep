@@ -26,7 +26,7 @@
             return $endereco_obj;   
         }
 
-        public function SelectCidadesByUF(int $uf)
+        public function SelectCidadesByUF(string $uf)
         {
             $sql = "SELECT * FROM cidade WHERE uf = ? ORDER BY descricao";
 
@@ -64,7 +64,7 @@
             return $stmt->fetchAll(DAO::FETCH_CLASS);
         }
 
-        public function SelectCep´ByLogradouro($logradouro)
+        public function SelectCepByLogradouro($logradouro)
         {
             $sql = "SELECT * FROM logradouro
             WHERE descricao_sem_numero LIKE :q";
