@@ -1,11 +1,8 @@
 <?php
 
-    include 'config.php';
-    include 'autoload.php';
-    include 'rotas.php';
+session_start();
 
-    include 'Controller/EnderecoController.php';
-
-    App\Controller\EnderecoController::teste();
-
+include 'config.php';
+include 'autoload.php';
+include 'rotas.php';
 ?>

@@ -1,7 +1,6 @@
 <?php
 
     use App\Controller\EnderecoController;
-use App\Model\CidadeModel;
 
     $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
@@ -11,12 +10,16 @@ use App\Model\CidadeModel;
             EnderecoController::GetCepByLogradouro();
         break;
 
+        case '/cep/by-endereco':
+            EnderecoController::GetLogradouroByCep();
+        break;
+
         case '/logradouro/by-bairro':
             EnderecoController::GetLogradouroByBairroAndCidade();
         break;
 
         case '/cidade/by-uf':
-            CidadeModel::GetCidadesByUF();
+            EnderecoController::GetCidadesByUF();
         break;
 
         case '/bairro/by-cidade':

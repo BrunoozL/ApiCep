@@ -3,7 +3,7 @@
     namespace App\Controller;
 
 use App\DAO\EnderecoDAO;
-use App\Model\{EnderecoModel, CidadeModel};
+use App\Model\{BairroModel, EnderecoModel, CidadeModel};
     use Exception;
 
     include 'Controller.php';
@@ -42,7 +42,7 @@ use App\Model\{EnderecoModel, CidadeModel};
                     isset($_GET['id_cidade']) ? $_GET['id_cidade'] : null,
                     'cep');
 
-                $model = new EnderecoModel();
+                $model = new BairroModel();
                 $model->GetLogradouroByBairroAndCidade($bairro, $id_cidade);
 
                 parent::GetResponseAsJSON($model->rows);
@@ -74,13 +74,12 @@ use App\Model\{EnderecoModel, CidadeModel};
         {
             try
             {
-                $id_cidade = parent::GetIntFromUrl(
-                    isset($_GET['id_cidade']) ? $_GET['id_cidade'] : null);
+                    $id_cidade = parent::GetIntFromUrl(
+                        isset($_GET['id_cidade']) ? $_GET['id_cidade'] : null);
                 
-                    $model = new EnderecoModel();
-                    $model->GetBairrosByCidade($id_cidade);
+                    $model = new BairroModel();
 
-                    parent::GetResponseAsJSON($model->rows);
+                    parent::GetResponseAsJSON($model->GetBairrosByCidade($id_cidade));
             }
             catch (Exception $e)
             {
@@ -88,16 +87,15 @@ use App\Model\{EnderecoModel, CidadeModel};
             }
         }
 
-        protected static function GetCidadesByUF()
+        public static function GetCidadesByUF(): void
         {
             try 
             {
-                $uf = $_GET['uf'];
+                $uf = parent::GetIntFromUrl(isset($_GET['uf']) ? $_GET['uf'] : null);
 
                 $model = new CidadeModel();
-                $model->GetCidadesByUF($uf);
 
-                parent::GetResponseAsJSON($model->rows);
+                parent::GetResponseAsJSON($model->GetCidadesByUF($uf));
             }
             catch (Exception $e)
             {

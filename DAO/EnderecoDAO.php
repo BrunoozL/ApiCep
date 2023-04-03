@@ -64,7 +64,7 @@
             return $stmt->fetchAll(DAO::FETCH_CLASS);
         }
 
-        public function SelectCepByLogradouro($logradouro)
+        public function SelectCepByLogradouro(string $logradouro)
         {
             $sql = "SELECT * FROM logradouro
             WHERE descricao_sem_numero LIKE :q";

@@ -26,11 +26,12 @@
             }
         }
 
-        public function GetCepByLogradouro(int $logradouro)
+        public function GetCepByLogradouro(string $logradouro)
         {
             try
             {
                 $dao = new EnderecoDAO();
+
                 return $dao->SelectCepByLogradouro($logradouro);
             } catch(Exception $e)
             {

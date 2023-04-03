@@ -3,7 +3,7 @@
     namespace App\Model;
 
     use App\DAO\EnderecoDAO;
-use Exception;
+    use FFI\Exception;
 
     class CidadeModel extends Model
     {
